@@ -1,3 +1,5 @@
+require "rugged"
+require "json"
 require "social_snippet/supports/git/version"
 require "social_snippet/repository/drivers/git_driver"
 
