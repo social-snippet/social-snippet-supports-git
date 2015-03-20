@@ -1,0 +1,33 @@
+language: ruby
+
+rvm:
+  - "2.2"
+  - "2.1"
+  - "2.0"
+  - "1.9"
+
+bundler_args: "--without debug --jobs 3"
+
+sudo: false
+
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=YES
+
+script:
+  - bundle exec rake spec
+
+deploy:
+  provider: rubygems
+  api_key:
+    master:
+      secure: "votwFnqKibzKsE9cBS2vXsmtewjt0ZuAj6ivBizb31dPPwLTD+naPPyRVVf+NMKUN6lPkMBzbUJ0Lcp51FDBE8UwQhcEMgOanhEVxwwCvky5aDHBT77LCsQOiwJHKVoGuQx/xDDiAsazf+3xuGOY2S5BElGggUzH2Uoc9Dvu+1w="
+  gem:
+    master: social_snippet-supports-git
+  on:
+    repo: social-snippet/social-snippet-supports-git
+    ruby: "2.2"
+
+cache:
+  bundler: true
+
